@@ -7,7 +7,7 @@ This project implements a simulation of the **Readers–Writers synchronization 
 1. **Writer Priority** – Writers are given priority over readers when they intend to access the shared resource.
 2. **Load Balancing** – Readers are distributed across multiple file replicas to balance access load.
 
-The system simulates multiple **reader threads** and one **writer thread** accessing **three replicas of the same file**. Synchronization ensures safe coordination between readers and the writer.
+The system simulates *10* **reader threads** and *one* **writer thread** accessing **three replicas of the same file**. Synchronization ensures safe coordination between readers and the writer.
 
 ---
 
@@ -154,4 +154,4 @@ These logs help visualize **thread synchronization** during execution.
 
 **Student:** Ravan Mehraliyev  
 **Course:** Principles of Operating Systems (CSCI-3510-20319)  
-**Assignment:** Readers–Writers Synchronization with Load Balancing
+**Assignment1:** Readers–Writers Synchronization with Load Balancing
