@@ -91,13 +91,13 @@ No external dependencies are required.
 
 # How to Run the Program
 
-### 1️⃣ Open a terminal and go to the project directory
+### First, Open a terminal and go to the project directory
 
 ```bash
 cd OS_Assignment
 ```
 
-### 2️⃣ Run the program
+### Second, Run the program
 
 ```bash
 python reader_writer.py
@@ -109,7 +109,7 @@ or
 python3 reader_writer.py
 ```
 
-### 3️⃣ Check the output
+### Then, Check the output
 
 After execution, open the `output` folder:
 
