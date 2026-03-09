@@ -1,114 +1,137 @@
-# Readers--Writers Problem with Load Balancing
+Readers–Writers Problem with Load Balancing
+Overview
 
-## Overview
+This project implements a simulation of the Readers–Writers synchronization problem with two additional requirements:
 
-This project implements a simulation of the Readers--Writers
-synchronization problem with two additional requirements:
+Writer Priority – Writers are given priority over readers when they intend to access the shared resource.
 
-1.  Writer Priority -- Writers are given priority over readers when they
-    intend to access the shared resource.
-2.  Load Balancing -- Readers are distributed across multiple file
-    replicas to balance access load.
+Load Balancing – Readers are distributed across multiple file replicas to balance access load.
 
-The system simulates multiple reader threads and one writer thread
-accessing three replicas of the same file. Synchronization ensures safe
-coordination between readers and the writer.
+The system simulates multiple reader threads and one writer thread accessing three replicas of the same file. Synchronization ensures safe coordination between readers and the writer.
 
----
+Features
 
-## Features
+Concurrent reader threads
 
-- Concurrent reader threads
-- A writer thread with priority over readers
-- Load-balanced reading across three file replicas
-- Thread-safe synchronization using locks and condition variables
-- Detailed logging of all operations
+A writer thread with priority over readers
 
----
+Load-balanced reading across three file replicas
 
-## System Behavior
+Thread-safe synchronization using locks and condition variables
 
-### Readers
+Detailed logging of all operations
 
-- Multiple reader threads spawn at random intervals.
-- Each reader reads from one of the three file replicas.
-- Readers are distributed to the replica with the fewest active
-  readers.
+System Behavior
+Readers
 
-### Writer
+Multiple reader threads spawn at random intervals.
 
-- A single writer thread periodically attempts to write.
-- The writer waits until all readers finish before writing.
-- The writer updates all three replicas simultaneously.
+Each reader reads from one of the three file replicas.
 
-### Synchronization
+Readers are distributed to the replica with the fewest active readers.
 
-The system ensures: - Multiple readers can read simultaneously. -
-Readers cannot read while the writer is writing. - The writer gets
-priority once it intends to write.
+Writer
 
----
+A single writer thread periodically attempts to write.
 
-## Files Generated
+The writer waits until all readers finish before writing.
+
+The writer updates all three replicas simultaneously.
+
+Synchronization Rules
+
+The system guarantees:
+
+Multiple readers can read simultaneously
+
+Readers cannot read while the writer is writing
+
+Writers receive priority when they request access
+
+Files Generated
 
 When the program runs, it creates an output directory containing:
 
-replica_1.txt\
-replica_2.txt\
-replica_3.txt\
-log.txt
+output/
+ ├── replica_1.txt
+ ├── replica_2.txt
+ ├── replica_3.txt
+ └── log.txt
+Description
+File	Purpose
+replica_1.txt	First file replica
+replica_2.txt	Second file replica
+replica_3.txt	Third file replica
+log.txt	Detailed log of all reader and writer operations
 
-Replica files store the current version of the data.\
-The log file records all reader and writer operations.
+Replica files store the current version of the data, while the log file records every read and write event.
 
----
-
-## Requirements
+Requirements
 
 Python 3.8 or later
 
-Standard libraries used: - threading - time - random - os
+Standard libraries used:
 
----
+threading
+time
+random
+os
 
-## How to Run the Program
+No external dependencies are required.
 
-Step 1: Open a terminal and go to the project directory
-
+How to Run the Program
+1️⃣ Open a terminal and go to the project directory
 cd OS_Assignment
-
-Step 2: Run the program
-
+2️⃣ Run the program
 python reader_writer.py
 
 or
 
 python3 reader_writer.py
+3️⃣ Check the output
 
-Step 3: After execution, check the output folder for:
+After execution, open the output folder:
 
-replica_1.txt\
-replica_2.txt\
-replica_3.txt\
-log.txt
+output/
+ ├── replica_1.txt
+ ├── replica_2.txt
+ ├── replica_3.txt
+ └── log.txt
+Example Log Events
 
----
+Example events recorded in the log:
 
-## Example Log Events
+[READER-ENTER] reader=3 replica=replica_2.txt
+[READER-EXIT ] reader=3 replica=replica_2.txt
 
-READER-ENTER -- a reader begins reading a replica\
-READER-EXIT -- a reader finishes reading\
-WRITER-WAIT -- the writer requests access\
-WRITER-START -- the writer begins writing\
-WRITER-END -- the writer finishes updating replicas
+[WRITER-WAIT ] writer=1 wants to write version=1
+[WRITER-START] writer=1 starts writing
+[WRITER-END  ] writer=1 finished writing
+Event Meaning
+Event	Description
+READER-ENTER	Reader starts reading
+READER-EXIT	Reader finishes reading
+WRITER-WAIT	Writer is waiting for readers
+WRITER-START	Writer begins writing
+WRITER-END	Writer finishes updating replicas
 
-These events help visualize synchronization between readers and the
-writer.
+These logs help visualize thread synchronization during execution.
 
----
-
-## Author
+Author
 
 Student: Ravan Mehraliyev
-Course: Princpls of Operating Systems (CSCI-3510 - 20319) - Assigment 1
-Assignment: Readers--Writers Synchronization with Load Balancing
+Course: Principles of Operating Systems (CSCI-3510-20319)
+Assignment: Readers–Writers Synchronization with Load Balancing
+
+💡 Tip:
+GitHub renders this version much cleaner because it uses:
+
+code blocks
+
+tables
+
+headings
+
+proper spacing
+
+If you want, I can also show you 3 small upgrades that will make your GitHub repo look much more professional (like a real software project).
